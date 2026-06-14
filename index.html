@@ -88,6 +88,44 @@
         footer div { color: #949699; margin-bottom: 5px; }
         footer a { color: #0071bb; text-decoration: none; }
         footer a:hover { text-decoration: underline; }
+        /* Стили для всплывающего окна */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup-content {
+            background: white;
+            padding: 40px 60px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+        .popup-content h1 {
+            font-size: 48px;
+            color: red;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .popup-content button {
+            padding: 10px 30px;
+            font-size: 20px;
+            background: #0071bb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .popup-content button:hover {
+            background: #005a99;
+        }
     </style>
 </head>
 <body>
@@ -136,7 +174,7 @@
                 <tbody>
                     <tr class="odd">
                         <td>03.12.2025</span></td>
-                        <td><a href="#">Сочинение</a></td>
+                        <td><a href="#" onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank'); return false;">Сочинение</a></td>
                         <td><span class="bold green">зачёт</span></span></td>
                         <td></span></td>
                         <td>Оценённый результат</span></td>
@@ -144,7 +182,7 @@
                     </tr>
                     <tr>
                         <td>04.06.2026</span></td>
-                        <td><a href="https://youtube.com" target="_blank">Русский язык</a></td>
+                        <td><a href="#" onclick="showPopup(); return false;">Русский язык</a></td>
                         <td><span class="bold green">42</span></span></td>
                         <td>24</span></td>
                         <td>Оценённый результат</span></td>
@@ -152,7 +190,7 @@
                     </tr>
                     <tr class="odd">
                         <td>08.06.2026</span></td>
-                        <td><a href="https://youtube.com" target="_blank">Математика профильная</a></span></td>
+                        <td><a href="#" onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank'); return false;">Математика профильная</a></span></td>
                         <td><span class="bold green">67</span></span></td>
                         <td>27</span></td>
                         <td>Оценённый результат</span></td>
@@ -160,7 +198,7 @@
                     </tr>
                     <tr>
                         <td>19.06.2026</span></td>
-                        <td>Информатика (КЕГЭ)</span></td>
+                        <td><a href="#" onclick="window.open('https://www.youtube.com/watch?v=6.7', '_blank'); return false;">Информатика (КЕГЭ)</a></span></td>
                         <td></span></td>
                         <td></span></td>
                         <td>Нет результата</span></td>
@@ -187,5 +225,21 @@
         <div>При использовании материалов портала ЕГЭ на внешних Интернет-ресурсах ссылка на <a href="http://obrnadzor.gov.ru/" target="_blank">первоисточник</a> обязательна</div>
     </footer>
 </div>
+
+<script>
+    function showPopup() {
+        // Создаём затемнённый фон
+        var overlay = document.createElement('div');
+        overlay.className = 'popup-overlay';
+        
+        // Создаём содержимое
+        var content = document.createElement('div');
+        content.className = 'popup-content';
+        content.innerHTML = '<h1>ИДИ НАХУЙ</h1><button onclick="this.closest(\'.popup-overlay\').remove()">OK</button>';
+        
+        overlay.appendChild(content);
+        document.body.appendChild(overlay);
+    }
+</script>
 </body>
 </html>
